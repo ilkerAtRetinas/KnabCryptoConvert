@@ -22,6 +22,7 @@ namespace Web.ViewModels
 
         /// <summary>
         /// Mapping of Response<Dictionary<string, CryptoCurrencyDetailDTO> to CryptoCurrencyViewModel
+        /// CoinMarketCap shows maximum of 6 decimal points for small valued crypto currencies, hence the formatting for prices below 0.01 is set.
         /// </summary>
         public static Expression<Func<Response<Dictionary<string, CryptoCurrencyDetailDTO>>, CryptoCurrencyViewModel>> Projection
         {
@@ -35,7 +36,7 @@ namespace Web.ViewModels
                         CryptoCurrencySymbol = p.Value.Symbol,
                         Quotes = p.Value.Quote.Select(q => new QuoteViewModel{ 
                             Currency = q.Key,
-                            Quote = q.Value.Price.Value.ToString("#.##"),
+                            Quote = q.Value.Price.Value > 0.01 ? q.Value.Price.Value.ToString("#.##") : q.Value.Price.Value.ToString("#.######"),
                             MarketCapValue = q.Value.MarketCap.Value.ToString("#,##"),
                             LastUpdated = q.Value.LastUpdated.Value.ToLocalTime().DateTime.ToString("G")
                         }).ToList(),
