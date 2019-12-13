@@ -32,7 +32,7 @@ namespace Web
             services.AddHttpClient("coinMarketCap",c =>
             {
                 c.DefaultRequestHeaders.Add("X-CMC_PRO_API_KEY", "2f7f3e4c-2391-46fe-8b58-d1c36b2d5baf");
-                c.BaseAddress = new Uri("https://asdpro-api.coinmarketcap.com/v1/");
+                c.BaseAddress = new Uri("https://pro-api.coinmarketcap.com/v1/");
                 c.DefaultRequestHeaders.Add("Accept", "application/json");
             });
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
