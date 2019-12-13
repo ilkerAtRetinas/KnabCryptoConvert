@@ -8,7 +8,7 @@
 
 
 <form asp-action="GetExchangeRates" method="get">
-    @Html.AntiForgeryToken()
+    
     <div class="row form-group mb-2">
 
         <label class="col-sm-3" asp-for="CryptoCurrencySymbolId">Select CryptoCurrency to Convert</label>
@@ -17,9 +17,8 @@
         </select>
         <input type="submit" value="Get Prices For USD,EUR,GBP,BRL and AUD" class="btn btn-primary btn-sm col-sm-3 ml-1" />
     </div>
-    @*<div class="row" style="margin-top:15px;margin-bottom:15px;">
-      
-    </div>*@
+
+
     @if (!String.IsNullOrEmpty(Model.ErrorMessage))
     {
         @:<script type="text/javascript">alert('@Html.Raw(Model.ErrorMessage)')</script>
