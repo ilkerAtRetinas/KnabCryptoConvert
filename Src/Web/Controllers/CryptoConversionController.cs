@@ -65,7 +65,7 @@ namespace Web.Controllers
                     var url = QueryHelpers.AddQueryString("cryptocurrency/quotes/latest", queryParams);
                     requestMessages.Add(url);
                 }
-                var httpClient = _clientFactory.CreateClient("coinMarketCap");
+                
                 Response<Dictionary<string, CryptoCurrencyDetailDTO>> response = await _mediator.Send(new GetExchangeRatesByCryptoCurrencyIdQuery { HttpClientName = "coinMarketCap", RequestMessagesUris = requestMessages });
                 ccVm = CryptoCurrencyViewModel.Create(response);
                 
