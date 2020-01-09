@@ -22,13 +22,11 @@ namespace Web.Controllers
     public class CryptoConversionController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly IHttpClientFactory _clientFactory;
         private readonly ILogger<CryptoConversionController> _logger;
 
-        public CryptoConversionController(IMediator mediator, IHttpClientFactory clientFactory, ILogger<CryptoConversionController> logger)
+        public CryptoConversionController(IMediator mediator, ILogger<CryptoConversionController> logger)
         {
             _mediator = mediator;
-            _clientFactory = clientFactory;
             _logger = logger;
         }
         [HttpGet]
